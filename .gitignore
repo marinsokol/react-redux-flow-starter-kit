@@ -1,0 +1,5 @@
+# GIT Ignore Configuration File
+
+node_modules/
+coverage/
+public/dist

@@ -1,0 +1,7 @@
+# ESLint Ignore Configuration File
+# See http://eslint.org/docs/user-guide/configuring#ignoring-files-and-directories for more details.
+
+public/**
+node_modules/**
+__test__/**
+coverage/**
