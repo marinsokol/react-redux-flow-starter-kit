@@ -18,12 +18,13 @@ export default class extends PureComponent {
 
   static propTypes = {
     children: PropTypes.element,
+    location: PropTypes.shape(),
   }
 
   state = {}
 
   render() {
-    const { children } = this.props;
+    const { children, location: { pathname } } = this.props;
 
     return (
       <Layout>
@@ -31,15 +32,15 @@ export default class extends PureComponent {
           <Menu
             mode="horizontal"
             theme="dark"
-            defaultSelectedKeys={['0']}
+            defaultSelectedKeys={[pathname]}
           >
-            <Menu.Item key="0">
+            <Menu.Item key="/">
               <Link to="/">
                 <Icon type="home" />
                 Home
               </Link>
             </Menu.Item>
-            <Menu.Item key="1">
+            <Menu.Item key="/game">
               <Link to="/game">
                 <Icon type="play-circle-o" />
                 Game

@@ -1,13 +1,16 @@
-import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import Home from './components/Home.component';
+import { addCounter } from './actions';
 
-export default class extends PureComponent {
-  static displayName = 'Home'
+const mapStateToProps = state => ({
+  counter: state.counter,
+});
 
-  state = {}
+const mapDispatchToProps = dispatch => ({
+  addCounter: data => dispatch(addCounter(data)),
+});
 
-  render() {
-    return (<div className="home">
-      <img src="/images/koala.png" alt="React/Redux Serverless" />
-    </div>);
-  }
-}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
