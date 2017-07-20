@@ -1,6 +1,6 @@
+// @flow
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
-import PropTypes from 'prop-types';
 import {
   Layout,
   Menu,
@@ -13,13 +13,16 @@ const {
   Content,
 } = Layout;
 
-export default class extends PureComponent {
-  static displayName = 'App'
-
-  static propTypes = {
-    children: PropTypes.element,
-    location: PropTypes.shape(),
+type Props = {
+  children: HTMLElement,
+  location: {
+    pathname: string,
   }
+};
+type State = Object;
+
+export default class extends PureComponent<void, Props, State> {
+  static displayName = 'App'
 
   state = {}
 

@@ -5,3 +5,4 @@ public/**
 node_modules/**
 __test__/**
 coverage/**
+flow-typed/**

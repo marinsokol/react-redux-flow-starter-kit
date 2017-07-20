@@ -1,6 +1,12 @@
+// @flow
 import { COUNTER } from '../constants/actionTypes';
 
-export default function (state = 0, { type }) {
+type State = number;
+type Action = {
+  type: string,
+}
+
+export default function (state: State = 0, { type }: Action): State {
   switch (type) {
     case COUNTER.add:
       return state + 1;
