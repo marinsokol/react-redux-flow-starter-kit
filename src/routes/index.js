@@ -1,13 +1,12 @@
-import App from '../layout';
+import Root from '../layout';
 import Home from './home';
-import Game from './game';
+import gameRoute from './game';
 
-export default [
-  {
-    path: '/',
-    component: App,
-    indexRoute: { component: Home },
-    childRoutes: [
-      { path: '/game', component: Game },
-    ],
-  }];
+export default store => ({
+  path: '/',
+  component: Root,
+  indexRoute: { component: Home },
+  childRoutes: [
+    gameRoute(store),
+  ],
+});

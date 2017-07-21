@@ -4,13 +4,13 @@ import {
   compose,
 } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import reducers from '../reducers';
+import { makeRootReducer } from '../reducers';
 
-export default function configStore(initalState) {
+export default (initalState = {}) => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  return createStore(
-    reducers,
+  const store = createStore(
+    makeRootReducer(),
     initalState,
     composeEnhancers(
       applyMiddleware(
@@ -18,4 +18,8 @@ export default function configStore(initalState) {
       )
     )
   );
-}
+
+  store.asyncReducers = {};
+
+  return store;
+};

@@ -1,13 +1,9 @@
-import { connect } from 'react-redux';
-import Game from './components/Game.component';
+import { injectReducer } from '../../reducers';
+import memory from './reducers';
+import Game from './containers/Game';
 
-const mapStateToProps = state => ({
-  ...state.memory,
+export default store => ({
+  path: 'game',
+  component: Game,
+  onEnter: () => injectReducer(store, { key: 'memory', reducer: memory }),
 });
-
-const mapDispatchToProps = null;
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Game);

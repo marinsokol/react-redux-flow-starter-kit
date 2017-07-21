@@ -1,14 +1,15 @@
+// @flow
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { Badge } from 'antd';
 
-export default class extends PureComponent {
-  static displayName = 'Home'
+type Props = {
+  counter: number,
+  addCounter: Function,
+};
+type State = Object;
 
-  static propTypes = {
-    counter: PropTypes.number,
-    addCounter: PropTypes.func,
-  }
+export default class extends PureComponent<void, Props, State> {
+  static displayName = 'Home'
 
   state = {}
 

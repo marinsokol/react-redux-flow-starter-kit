@@ -22,7 +22,7 @@ type Props = {
 type State = Object;
 
 export default class extends PureComponent<void, Props, State> {
-  static displayName = 'App'
+  static displayName = 'Root'
 
   state = {}
 
