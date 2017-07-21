@@ -1,6 +1,5 @@
 export const GAME = {
-  play: '@GAME/play',
-  toggle: '@GAME/toggle',
+  restart: '@GAME/restart',
   open: '@GAME/open slot',
 };
 

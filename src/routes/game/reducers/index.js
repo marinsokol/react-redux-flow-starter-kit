@@ -5,7 +5,10 @@ import type { Slot, SlotAction } from '../types';
 type State = {
   board: Array<Slot>,
   player: string,
-  turn: number,
+  turn: {
+    x: number,
+    o: number,
+  },
   result: {
     x: number,
     o: number,
@@ -20,6 +23,7 @@ while (board.length < 16) {
     board.push({
       src: temp,
       selected: false,
+      open: false,
       id,
     });
     id += 1;
@@ -29,44 +33,76 @@ while (board.length < 16) {
 const initState = {
   board,
   player: 'x',
-  turn: 0,
+  turn: {
+    x: 0,
+    o: 0,
+  },
   result: {
     x: 0,
     o: 0,
   },
 };
 
-const checkBoard = (state: State, slot: Slot): State => {
-  const { turn } = state;
-  if (turn === 0) {
+const checkGame = (state: State, slot: Slot): State => {
+  const slotIndex = state.board.findIndex(i => (i.src === slot.src && i.selected));
+
+  if (slotIndex !== -1) {
     return {
       ...state,
-      turn: 1,
-      board: state.board.map((i, index) => {
-        if (slot.id === index) {
+      turn: {
+        ...state.turn,
+        [state.player]: state.turn[state.player] + 1,
+      },
+      result: {
+        ...state.result,
+        [state.player]: state.result[state.player] + 1,
+      },
+      board: state.board.map((i) => {
+        if (slot.src === i.src) {
           return {
             ...i,
             selected: true,
+            open: true,
           };
         }
 
         return { ...i };
       }),
     };
-  } else if (turn === 1) {
-    const index = state.board.findIndex(i => (i.src === slot.src && i.selected));
-
-    console.log(index);
-    console.log(state.board[index]);
   }
 
-  return state;
+  return {
+    ...state,
+    player: (state.player === 'x' && (state.turn[state.player] + 1) % 2 === 0) ? 'o' : 'x',
+    turn: {
+      ...state.turn,
+      [state.player]: state.turn[state.player] + 1,
+    },
+    board: state.board.map((i, index) => {
+      if (slot.id === index) {
+        return {
+          ...i,
+          selected: true,
+        };
+      }
+
+      return { ...i };
+    }),
+  };
 };
 
 export default (state: State = initState, { type, payload }: SlotAction): State => {
   switch (type) {
     case GAME.open:
-      return checkBoard(state, payload);
+      return checkGame(state, payload);
+    case GAME.restart:
+      return {
+        ...state,
+        board: state.board.map(i => ({
+          ...i,
+          selected: false,
+        })),
+      };
     default:
       return state;
   }

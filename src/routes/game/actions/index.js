@@ -6,3 +6,7 @@ export const openSlot = (data: Slot): SlotAction => ({
   type: GAME.open,
   payload: data,
 });
+
+export const restartGame = (): SlotAction => ({
+  type: GAME.restart,
+});

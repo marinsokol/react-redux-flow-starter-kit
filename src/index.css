@@ -21,8 +21,26 @@
   margin-top: 35px;
 }
 
-.game .game-body {
+.game .game-title {
+  font-weight: bold;
+}
+
+.game .game-body,
+.game .game-header,
+.game .game-title {
   width: 75%;
+}
+
+.game .game-header {
+  display: flex;
+  text-align: center;
+}
+
+.game .game-subtitle {
+  width: 25%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 19px;
 }
 
 .game .game-body .game-slot {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Game from '../components/Game.component';
-import { openSlot } from '../actions';
+import { openSlot, restartGame } from '../actions';
 
 const mapStateToProps = state => ({
   ...state.memory,
@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   openSlot: data => dispatch(openSlot(data)),
+  restartGame: () => dispatch(restartGame()),
 });
 
 export default connect(
