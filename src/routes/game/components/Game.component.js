@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react';
-import { Col } from 'antd';
+import { Card, Col } from 'antd';
 
 type Slot = {
   src: number,
@@ -8,7 +8,7 @@ type Slot = {
 };
 type Props = {
   board: Array<Slot>,
-  toggleSlot: Function,
+  openSlot: Function,
 };
 type State = Object;
 
@@ -19,26 +19,27 @@ export default class extends PureComponent<void, Props, State> {
 
   getBoardDOM = () =>
     this.props.board.map((i, index) => (
-      <Col
-        className="game-slot"
-        span={5}
-        key={index}
-        onClick={() => this.handleClick(i)}
-      >
-        <img src={`/images/memory/${(i.selected) ? i.src : 'close'}.png`} alt="slot" />
+      <Col md={6} xs={6}>
+        <Card
+          className="game-slot"
+          key={index}
+          onClick={() => this.handleClick(i)}
+        >
+          <img src={`/images/memory/${(i.selected) ? i.src : 'close'}.png`} alt="slot" />
+        </Card>
       </Col>
     ))
 
-  handleClick = (slot: Slot) => this.props.toggleSlot(slot)
+  handleClick = (slot: Slot) => this.props.openSlot(slot)
 
   render() {
     return (
       <div className="game">
+        <div className="game-header">
+          0:0
+        </div>
         <div className="game-body">
           {this.getBoardDOM()}
-        </div>
-        <div className="game-footer">
-          0:0
         </div>
       </div>
     );

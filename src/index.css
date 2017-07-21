@@ -26,11 +26,9 @@
 }
 
 .game .game-body .game-slot {
-  border: 1px solid black;
-  border-radius: 25px;
   padding: 5px;
-  margin: 13px;
   cursor: pointer;
+  width: 100%;
 }
 
 .game img {
