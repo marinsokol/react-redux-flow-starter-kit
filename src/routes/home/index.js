@@ -1,7 +1,7 @@
 // @flow
 import { connect } from 'react-redux';
 import Home from './components/Home.component';
-import { addCounter } from './actions';
+import { addCounter, addTwoCounter } from '../../actions';
 
 type State = {
   counter: number
@@ -12,7 +12,8 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addCounter: data => dispatch(addCounter(data)),
+  addCounter: () => dispatch(addCounter()),
+  addTwoCounter: () => dispatch(addTwoCounter()),
 });
 
 export default connect(
