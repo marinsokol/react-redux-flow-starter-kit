@@ -1,4 +1,3 @@
-// @flow
 import React, { PureComponent } from 'react';
 import { browserHistory, Router } from 'react-router';
 import { Provider } from 'react-redux';
@@ -27,6 +26,6 @@ export default class extends PureComponent<void, Props, State> {
           <Router history={browserHistory} routes={routes} />
         </div>
       </Provider>
-    )
+    );
   }
 }

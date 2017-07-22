@@ -1,4 +1,3 @@
-// @flow
 import React, { PureComponent } from 'react';
 import {
   Badge,
@@ -19,11 +18,11 @@ export default class extends PureComponent<void, Props, State> {
 
   state = {}
 
-  handleClick = () => this.props.addCounter()
+  handleClick = ():void => this.props.addCounter()
 
-  handleDoubleClick = () => this.props.addTwoCounter()
+  handleDoubleClick = ():void => this.props.addTwoCounter()
 
-  render() {
+  render():?React$Element<any> {
     const { counter } = this.props;
 
     return (<div className="home">
@@ -47,7 +46,7 @@ export default class extends PureComponent<void, Props, State> {
             ghost
             type="danger"
             onClick={this.handleDoubleClick}
-            style={{height: '100% '}}
+            style={{ height: '100% ' }}
           >
             Double Click <br />
             <small>(1s delay)</small>

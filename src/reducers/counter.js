@@ -1,4 +1,3 @@
-// @flow
 import { COUNTER } from '../constants/actionTypes';
 
 type State = number;

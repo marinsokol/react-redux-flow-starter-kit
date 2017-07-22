@@ -1,4 +1,3 @@
-// @flow
 import { GAME } from '../constants/actionTypes';
 import type { Slot, SlotAction } from '../types';
 

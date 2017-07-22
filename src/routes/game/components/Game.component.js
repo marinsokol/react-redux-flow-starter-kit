@@ -1,15 +1,11 @@
-// @flow
 import React, { PureComponent } from 'react';
 import {
   Card,
   Col,
   Button,
 } from 'antd';
+import type { Slot } from '../types';
 
-type Slot = {
-  src: number,
-  selected: boolean,
-};
 type Props = {
   board: Array<Slot>,
   player: string,
@@ -42,7 +38,7 @@ export default class extends PureComponent<void, Props, State> {
     }
   }
 
-  getBoardDOM = () =>
+  getBoardDOM = ():Array<?React$Element<any>> =>
     this.props.board.map((i, index) => (
       <Col md={6} xs={6} key={index}>
         <Card
@@ -54,17 +50,18 @@ export default class extends PureComponent<void, Props, State> {
       </Col>
     ))
 
-  handleClick = (slot: Slot) => {
+  handleClick = (slot: Slot):void => {
     const { disableClick } = this.state;
     if (slot.selected || slot.open || disableClick) return;
 
     this.props.openSlot(slot);
   }
 
-  handleRestart = () => this.props.restartGame()
+  handleRestart = ():void => this.props.restartGame()
 
-  render() {
+  render():?React$Element<any> {
     const { result: { x, o }, player } = this.props;
+
     return (
       <div className="game">
         <div className="game-header">

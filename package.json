@@ -8,6 +8,7 @@
   "scripts": {
     "lint": "eslint ./src",
     "lint:fix": "npm run lint -- --fix",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "start": "node server.js",
     "dev": "concurrently --kill-others \" webpack -w\" \"node server.js\"",
     "test": "jest --coverage",

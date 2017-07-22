@@ -5,13 +5,31 @@ import {
   restartGame,
   resetBoard,
 } from '../actions';
+import type { Slot } from '../types';
 
-const mapStateToProps = state => ({
+type Memory = {
+  board: Array<Slot>,
+  player: string,
+  turn: {
+    x: number,
+    o: number,
+  },
+  result: {
+    x: number,
+    o: number,
+  },
+};
+type State = {
+  counter: number,
+  memory: Memory,
+};
+
+const mapStateToProps = (state: State): Memory => ({
   ...state.memory,
 });
 
 const mapDispatchToProps = dispatch => ({
-  openSlot: data => dispatch(openSlot(data)),
+  openSlot: (data: Slot) => dispatch(openSlot(data)),
   restartGame: () => dispatch(restartGame()),
   resetBoard: () => dispatch(resetBoard()),
 });
