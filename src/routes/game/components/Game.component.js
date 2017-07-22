@@ -1,6 +1,10 @@
 // @flow
 import React, { PureComponent } from 'react';
-import { Card, Col } from 'antd';
+import {
+  Card,
+  Col,
+  Button,
+} from 'antd';
 
 type Slot = {
   src: number,
@@ -15,17 +19,26 @@ type Props = {
   },
   openSlot: Function,
   restartGame: Function,
+  resetBoard: Function,
 };
-type State = Object;
+type State = {
+  disableClick: boolean,
+};
 
 export default class extends PureComponent<void, Props, State> {
   static displayName = 'Game'
 
-  state = {}
+  state = {
+    disableClick: false,
+  }
 
-  componentDidUpdate(prevProps: Props) {
-    if (this.props.player !== prevProps.player) {
-      this.props.restartGame();
+  componentWillUpdate(nextProps: Props) {
+    if (this.props.player !== nextProps.player) {
+      this.setState({ disableClick: true });
+      setTimeout(() => {
+        this.props.resetBoard();
+        this.setState({ disableClick: false });
+      }, 1000);
     }
   }
 
@@ -41,20 +54,34 @@ export default class extends PureComponent<void, Props, State> {
       </Col>
     ))
 
-  handleClick = (slot: Slot) => this.props.openSlot(slot)
+  handleClick = (slot: Slot) => {
+    const { disableClick } = this.state;
+    if (slot.selected || slot.open || disableClick) return;
+
+    this.props.openSlot(slot);
+  }
+
+  handleRestart = () => this.props.restartGame()
 
   render() {
     const { result: { x, o }, player } = this.props;
     return (
       <div className="game">
         <div className="game-header">
-          <div className="game-title">
-            x : o <br />
+          <Col md={8} xs={8}>
+            <Button
+              type="dashed"
+              onClick={this.handleRestart}
+            >
+              RESTART
+             </Button>
+          </Col>
+          <Col md={8} xs={8}>
             {x} : {o}
-          </div>
-          <div className="game-subtitle">
-            {player}
-          </div>
+          </Col>
+          <Col md={8} xs={8}>
+            Playing: <b>{player}</b>
+          </Col>
         </div>
         <div className="game-body">
           {this.getBoardDOM()}

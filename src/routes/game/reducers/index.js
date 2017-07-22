@@ -1,5 +1,5 @@
 // @flow
-import { GAME } from '../../../constants/actionTypes';
+import { GAME } from '../constants/actionTypes';
 import type { Slot, SlotAction } from '../types';
 
 type State = {
@@ -71,9 +71,30 @@ const checkGame = (state: State, slot: Slot): State => {
     };
   }
 
+
+  if ((state.turn[state.player] + 1) % 2 === 0) {
+    return {
+      ...state,
+      player: (state.player === 'x') ? 'o' : 'x',
+      turn: {
+        ...state.turn,
+        [state.player]: state.turn[state.player] + 1,
+      },
+      board: state.board.map((i, index) => {
+        if (slot.id === index) {
+          return {
+            ...i,
+            selected: true,
+          };
+        }
+
+        return { ...i };
+      }),
+    };
+  }
+
   return {
     ...state,
-    player: (state.player === 'x' && (state.turn[state.player] + 1) % 2 === 0) ? 'o' : 'x',
     turn: {
       ...state.turn,
       [state.player]: state.turn[state.player] + 1,
@@ -95,7 +116,7 @@ export default (state: State = initState, { type, payload }: SlotAction): State 
   switch (type) {
     case GAME.open:
       return checkGame(state, payload);
-    case GAME.restart:
+    case GAME.resetBoard:
       return {
         ...state,
         board: state.board.map(i => ({
@@ -103,6 +124,8 @@ export default (state: State = initState, { type, payload }: SlotAction): State 
           selected: false,
         })),
       };
+    case GAME.restart:
+      return initState;
     default:
       return state;
   }

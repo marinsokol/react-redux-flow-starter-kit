@@ -1,5 +1,5 @@
 // @flow
-import { GAME } from '../../../constants/actionTypes';
+import { GAME } from '../constants/actionTypes';
 import type { Slot, SlotAction } from '../types';
 
 export const openSlot = (data: Slot): SlotAction => ({
@@ -9,4 +9,8 @@ export const openSlot = (data: Slot): SlotAction => ({
 
 export const restartGame = (): SlotAction => ({
   type: GAME.restart,
+});
+
+export const resetBoard = (): SlotAction => ({
+  type: GAME.resetBoard,
 });

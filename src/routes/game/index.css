@@ -1,0 +1,35 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}Ï
+
+.game .game-title {
+  font-weight: bold;
+}
+
+.game .game-body,
+.game .game-header {
+  width: 50%;
+}
+
+.game .game-header {
+  display: flex;
+  text-align: center;
+  padding: 5px;
+}
+
+.game .game-header div {
+  align-self: center;
+}
+
+.game .game-body .game-slot {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.game img {
+  width: 100%;
+}

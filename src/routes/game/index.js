@@ -1,6 +1,7 @@
 import { injectReducer } from '../../reducers';
 import memory from './reducers';
 import Game from './containers/Game';
+import './index.css';
 
 export default store => ({
   path: 'game',
