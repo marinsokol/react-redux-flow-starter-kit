@@ -70,7 +70,7 @@ export default class extends PureComponent<void, Props, State> {
               type="dashed"
               onClick={this.handleRestart}
             >
-              RESTART
+              NEW GAME
              </Button>
           </Col>
           <Col md={8} xs={8}>

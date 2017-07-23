@@ -54,7 +54,7 @@ export default class extends PureComponent<void, Props, State> {
         </Col>
         <Col md={8} xs={8}>
           <Badge count={counter}>
-            Koala pressed
+            Counter
         </Badge>
         </Col>
       </Row>

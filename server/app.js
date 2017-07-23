@@ -6,24 +6,28 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackConfig = require('../webpack.config');
+const config = require('../config');
 
 const port = process.env.PORT || 3050;
-const compiler = webpack(webpackConfig);
 const app = express();
 
-app.use(webpackDevMiddleware(compiler, {
-  noInfo: false,
-  quiet: false,
-  publicPath: webpackConfig.output.publicPath,
-  stats: {
-    chunks: false,
-    chunkModules: false,
-    colors: true,
-  },
-}));
 
-app.use(webpackHotMiddleware(compiler));
+if (config.__DEV__) {
+  const compiler = webpack(webpackConfig);
 
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: false,
+    quiet: false,
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+      chunks: false,
+      chunkModules: false,
+      colors: true,
+    },
+  }));
+
+  app.use(webpackHotMiddleware(compiler));
+}
 
 app.use(express.static(path.resolve('./public')));
 app.get('*', function (request, response) {

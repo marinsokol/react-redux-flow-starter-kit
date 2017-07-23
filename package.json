@@ -10,6 +10,7 @@
     "lint:fix": "npm run lint -- --fix",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "start": "node ./server/app.js",
+    "production": "better-npm-run production",
     "dev": "concurrently --kill-others \" webpack -w\" \"node server.js\"",
     "test": "jest --coverage",
     "build": "better-npm-run build",
@@ -19,6 +20,12 @@
   "betterScripts": {
     "build": {
       "command": "webpack --progress -p",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "production": {
+      "command": "npm run build && npm start",
       "env": {
         "NODE_ENV": "production"
       }
