@@ -38,7 +38,7 @@ export default class extends PureComponent<void, Props, State> {
     }
   }
 
-  getBoardDOM = ():Array<?React$Element<any>> =>
+  getBoardDOM = () =>
     this.props.board.map((i, index) => (
       <Col md={6} xs={6} key={index}>
         <Card
@@ -50,16 +50,16 @@ export default class extends PureComponent<void, Props, State> {
       </Col>
     ))
 
-  handleClick = (slot: Slot):void => {
+  handleClick = (slot: Slot) => {
     const { disableClick } = this.state;
     if (slot.selected || slot.open || disableClick) return;
 
     this.props.openSlot(slot);
   }
 
-  handleRestart = ():void => this.props.restartGame()
+  handleRestart = () => this.props.restartGame()
 
-  render():?React$Element<any> {
+  render() {
     const { result: { x, o }, player } = this.props;
 
     return (

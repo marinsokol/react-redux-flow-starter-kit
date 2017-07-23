@@ -9,7 +9,7 @@
     "lint": "eslint ./src",
     "lint:fix": "npm run lint -- --fix",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "start": "node server.js",
+    "start": "node ./server/app.js",
     "dev": "concurrently --kill-others \" webpack -w\" \"node server.js\"",
     "test": "jest --coverage",
     "build": "better-npm-run build",
@@ -53,6 +53,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
+    "babel-regenerator-runtime": "^6.5.0",
     "better-npm-run": "^0.0.15",
     "css-loader": "^0.28.0",
     "eslint": "^3.7.1",
@@ -85,7 +86,9 @@
     "store": "^2.0.4",
     "style-loader": "^0.16.1",
     "uid": "^0.0.2",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-hot-middleware": "^2.18.2"
   },
   "devDependencies": {
     "concurrently": "^3.4.0",

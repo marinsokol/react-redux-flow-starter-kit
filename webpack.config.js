@@ -1,7 +1,11 @@
 /* eslint-disable */
 
 const webpack = require('webpack');
-let plugins = [];
+const path = require('path');
+let plugins = [
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.NoErrorsPlugin()
+];
 
 if (process.env.NODE_ENV === 'production') {
   plugins = [
@@ -14,10 +18,18 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   devtool: 'source-map',
-  entry: __dirname + '/src/app.js',
+  devServer: { inline: true },
+  entry: {
+    "index": [
+      'babel-regenerator-runtime',
+      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
+      './src/app'
+    ],
+  },
   output: {
-    path: __dirname + '/public/dist',
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "public"),
+    publicPath: "/dist",
+    filename: "bundle.js"
   },
   module: {
     loaders: [

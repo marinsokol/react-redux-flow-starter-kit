@@ -18,11 +18,11 @@ export default class extends PureComponent<void, Props, State> {
 
   state = {}
 
-  handleClick = ():void => this.props.addCounter()
+  handleClick = () => this.props.addCounter()
 
-  handleDoubleClick = ():void => this.props.addTwoCounter()
+  handleDoubleClick = () => this.props.addTwoCounter()
 
-  render():?React$Element<any> {
+  render() {
     const { counter } = this.props;
 
     return (<div className="home">
