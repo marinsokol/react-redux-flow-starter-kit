@@ -53,7 +53,7 @@ export default class extends PureComponent<void, Props, State> {
         <Content>
           {children}
         </Content>
-        <Footer>Setup Kit@2017</Footer>
+        <Footer>React & Redux (with Flow) Starter Kit @ 2017</Footer>
       </Layout>
     );
   }

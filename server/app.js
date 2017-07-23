@@ -22,11 +22,7 @@ app.use(webpackDevMiddleware(compiler, {
   },
 }));
 
-app.use(webpackHotMiddleware(compiler, {
-  'log': false,
-  'path': '/__webpack_hmr',
-  'heartbeat': 10 * 1000
-}));
+app.use(webpackHotMiddleware(compiler));
 
 
 app.use(express.static(path.resolve('./public')));
