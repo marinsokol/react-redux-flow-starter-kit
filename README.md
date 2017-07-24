@@ -33,11 +33,11 @@ While developing, you will probably rely mostly on `yarn start`; however, there 
 |`yarn <script>`    |Description|
 |-------------------|-----------|
 |`start`            |Serves your app at `localhost:3050`|
-|`build`            |Builds the application to ./dist|
+|`build`            |Builds the application to ./public/dist|
 |`test`             |Runs unit tests with Jest. See [testing](#testing)|
 |`lint`             |[Lints](http://stackoverflow.com/questions/8503559/what-is-linting) the project for potential errors|
 |`lint:fix`         |Lints the project and [fixes all correctable errors](http://eslint.org/docs/user-guide/command-line-interface.html#fix)|
-|`flow`         |Runs [Flow](https://flow.org/en/docs/frameworks/react/) type checker. See [Type-checking](type-checking) |
+|`flow`         |Runs [Flow](https://flow.org/en/docs/frameworks/react/) type checker. See [Type Checking](type-checking) |
 
 ## Project Structure
 
@@ -75,4 +75,11 @@ While developing, you will probably rely mostly on `yarn start`; however, there 
 │   │   └── index.js           
 │   └── types             # Custom type for Flow
 └── tests                    # Unit tests
+```
+
+## Type Checking
+
+This project uses [Flow](https://flow.org/) static type checker. Flow settings are defined in `.flowconfig`. By default, Flow ignores `__test__, config, node_modules, public, server` floders and checking ALL other .js files. If You are using VS Code, You can install [vscode-flow-ide](https://marketplace.visualstudio.com/items?itemName=gcazaciuc.vscode-flow-ide) to get live type checking and errors. You can also type check by running: 
+```bash
+$ yarn run flow
 ```
