@@ -1,4 +1,4 @@
-# React / redux (with Flow) Starter Kit
+# React / Redux (with Flow) Starter Kit
 
 ## Table of Contents
 1. [Requirements](#requirements)
@@ -16,7 +16,7 @@
 
 ## Installation
 ```bash
-$ git clone https://github.com/davezuko/react-redux-starter-kit.git <my-project-name>
+$ git clone https://gitlab.com/marin.sokol/react-redux-serverless.git <my-project-name>
 $ cd <my-project-name>
 ```
 When that's done, install the project dependencies. It is recommended that you use [Yarn](https://yarnpkg.com/) for deterministic dependency management, but `npm install` will suffice.
