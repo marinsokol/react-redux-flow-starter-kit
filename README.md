@@ -6,6 +6,7 @@
 1. [Running the Project](#running-the-project)
 1. [Project Structure](#project-structure)
 1. [Live development](#live-development)
+1. [Async](#async)
 1. [Type Checking](#type-checking)
 1. [Deployment](#deployment)
 
@@ -93,6 +94,20 @@ yarn add --dev redux-devtools redux-devtools-log-monitor redux-devtools-dock-mon
 ```
 
 Then follow the [manual integration walkthrough](https://github.com/gaearon/redux-devtools/blob/master/docs/Walkthrough.md).
+
+## Async
+This project uses [redux-observable](https://redux-observable.js.org) for async actions and creating side effects. Redux-observable is using 'epics' for that actions. Epics are functiona which takes a stream of actions and returns a stream of actions. Actions in, actions out. Like this:
+```bash
+const actionEpic = (action$) => action$;
+
+const pingEpic = action$ =>
+  action$.filter(action => action.type === 'PING')
+    .delay(1000) 
+    .mapTo({ type: 'PONG' });
+
+// later you dispatch only 'PING' action
+```
+Your reducers will receive the original PING action and PONG action after 1s.
 
 ## Type Checking
 
