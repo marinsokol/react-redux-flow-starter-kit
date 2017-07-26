@@ -55,7 +55,7 @@ export default class extends PureComponent<void, Props, State> {
         <Col md={8} xs={8}>
           <Badge count={counter}>
             Counter
-        </Badge>
+          </Badge>
         </Col>
       </Row>
     </div>);
