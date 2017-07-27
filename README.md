@@ -16,7 +16,7 @@
 
 ## Installation
 ```bash
-$ git clone https://gitlab.com/marin.sokol/react-redux-serverless.git <my-project-name>
+$ git clone https://github.com/marinsokol/react-redux-flow-starter-kit.git <my-project-name>
 $ cd <my-project-name>
 ```
 When that's done, install the project dependencies. It is recommended that you use [Yarn](https://yarnpkg.com/) for deterministic dependency management, but `npm install` will suffice.
